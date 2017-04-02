@@ -13,6 +13,15 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "minimal/xenial64"
+  config.vm.synced_folder ".", "/vagrant"
+  # Setup Virtualbox
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 1024
+  end
+  # Create dev vm
+  config.vm.define :dev do |dev|
+    dev.vm.provision :shell, path: "startup.sh"
+  end
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
