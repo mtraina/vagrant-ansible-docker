@@ -6,8 +6,8 @@
 
     - name: set licence selected
       shell: /bin/echo debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
-      sudo: yes
+      become: yes
 
     - name: install java 8
       apt: name=oracle-java8-installer state=latest update-cache=yes force=yes
-      sudo: yes
+      become: yes
