@@ -21,6 +21,7 @@ Vagrant.configure("2") do |config|
   # Create dev vm
   config.vm.define :dev do |dev|
     dev.vm.provision :shell, path: "startup.sh"
+    dev.vm.provision :shell, inline: 'ansible-playbook /vagrant/ansible/setup.yml'
   end
 
   # Disable automatic box update checking. If you disable this, then
