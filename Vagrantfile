@@ -14,6 +14,7 @@ Vagrant.configure("2") do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "minimal/xenial64"
   config.vm.synced_folder ".", "/vagrant"
+  config.vm.network "forwarded_port", guest: 8080, host: 8081
   # Setup Virtualbox
   config.vm.provider "virtualbox" do |v|
     v.memory = 1024
